@@ -1,0 +1,52 @@
+header a{
+    display: inline-block;
+    width: 60px;
+    font-size: 20px;
+    padding: 2px;
+    text-align: center;
+
+    color: #f9f9f9;
+    text-decoration: none;
+}
+
+header{
+    text-align: center;
+    width: 200px;
+    min-width: 200px;
+    border: 1px solid #9a9393;
+    background-color: #1D1E23;
+    height: 900px;
+
+    display: inline-flex;
+    flex-direction: column;
+    color: #d9e8fa;
+}
+
+.section-box
+{
+    display: inline-flex;
+    flex: 1;
+    flex-direction: column;
+    overflow: auto;
+}
+.mission{
+    margin: 5px;
+    display: block;
+
+}
+.warning{
+    margin: 5px;
+    display: block;
+}
+.add{
+    display: none;
+    padding: 10px;
+    border: 1px solid;
+}
+.display{
+
+}
+.abel{
+    display: inline-block;
+    width: 100px;
+}

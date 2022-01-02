@@ -1,0 +1,340 @@
+
+
+
+
+<html>
+<head>
+    <title>线路</title>
+    <link href="css/system.css" rel="stylesheet" type="text/css">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js" rel="external nofollow" >
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#a").click(function () {
+                $("#al").slideToggle("fast")
+            })
+        })
+    </script>
+</head>
+<body>
+
+
+<header>
+    <span>系统</span>
+    <a href="main.jsp">主页</a>
+    <a href="line.jsp">线路</a>
+    <a href="infrastructure.jsp">设施</a>
+    <a href="facility.jsp">设备</a>
+    <a href="mission.jsp">任务</a>
+    <a href="report.jsp">记录</a>
+    <a href="warning.jsp">警告</a>
+</header>
+
+
+<div class="section-box" style="height: 890px;">
+    <h1>线路</h1>
+    <button id="a">add</button>
+    <div class="add" id="al" style="display: none">
+        <form method="get" action="line">
+            <input name="method" value="add" hidden/>
+            <span class="abel">编号：</span>
+            <input name="id"/>
+            <br>
+            <span class="abel">线路名：</span>
+            <input name="name"/>
+            <br>
+            <span class="abel">等级：</span>
+            <select name="grade">
+                <option value="普速" selected>普速</option>
+                <option value="高速">高速</option>
+            </select>
+            <br>
+            <span class="abel">类型：</span>
+            <select name="level">
+                <option value="干线" selected>干线</option>
+                <option value="支线">支线</option>
+                <option value="联络线">联络线</option>
+            </select>
+            <br>
+            <span class="abel">轨距：</span>
+            <select name="gauge">
+                <option value="准轨" selected>准轨</option>
+                <option value="窄轨">窄轨</option>
+            </select>
+            <br>
+            <span class="abel">长度：</span>
+            <input name="length"/>
+            <br>
+            <span class="abel">路基：</span>
+            <select name="subgrade">
+                <option value="有砟" selected>有砟</option>
+                <option value="无砟">无砟</option>
+            </select>
+            <br>
+            <span class="abel">架设：</span>
+            <select name="position">
+                <option value="地面" selected>地面</option>
+                <option value="地下">地下</option>
+                <option value="高架/桥梁">高架/桥梁</option>
+            </select>
+            <br>
+            <span class="abel">是否电气化：</span>
+            <input type="checkbox" name="electrification"/>
+            <br>
+            <span class="abel">备注：</span>
+            <br>
+            <textarea name="remark" style="width: 300px;height: 50px;"></textarea>
+            <br>
+            <input type="submit" value="添加">
+        </form>
+    </div>
+    <div class="display">
+        
+        R01-L1-a0-a1-普速-准轨-干线-12km-有砟-地面-是-客专，有高速动车混行
+        <br>
+
+
+        <form method="get" action="/maintainance/line" id="ee_f" style="padding: 10px;border: 1px solid;">
+            <input name="method" value="edit" hidden/>
+            <span class="abel">编号：</span>
+            <input name="id" value="R01"/>
+            <br>
+            <span class="abel">线路名：</span>
+            <input name="name" value="L1-a0-a1"/>
+            <br>
+            <span class="abel">等级：</span>
+            <select name="grade">
+                <option value="普速" selected>普速</option>
+                <option value="高速" >高速</option>
+            </select>
+            <br>
+            <span class="abel">类型：</span>
+            <select name="level">
+                <option value="干线" selected>干线</option>
+                <option value="支线" >支线</option>
+                <option value="联络线" >联络线</option>
+            </select>
+            <br>
+            <span class="abel">轨距：</span>
+            <select name="gauge">
+                <option value="准轨" selected>准轨</option>
+                <option value="窄轨" >窄轨</option>
+            </select>
+            <br>
+            <span class="abel">长度：</span>
+            <input name="length" value="12km"/>
+            <br>
+            <span class="abel">路基：</span>
+            <select name="subgrade">
+                <option value="有砟" selected>有砟</option>
+                <option value="无砟" >无砟</option>
+            </select>
+            <br>
+            <span class="abel">架设：</span>
+            <select name="position">
+                <option value="地面" selected>地面</option>
+                <option value="地下" >地下</option>
+                <option value="高架/桥梁" >高架/桥梁</option>
+            </select>
+            <br>
+            <span class="abel">是否电气化：</span>
+            <input type="checkbox" checked name="electrification"/>
+            <br>
+            <span class="abel">备注：</span>
+            <br>
+            <textarea name="remark" style="width: 300px;height: 50px;">客专，有高速动车混行</textarea>
+            <br>
+            <input type="submit" value="修改">
+        </form>
+        <button onclick="del('R01')">删除</button>
+        <br>
+        
+        R02-L1-a1-a2-高速-准轨-干线-0.6km-无砟-高架/桥梁-是-客专，与有轨电车共用
+        <br>
+
+
+        <form method="get" action="/maintainance/line" id="ee_f" style="padding: 10px;border: 1px solid;">
+            <input name="method" value="edit" hidden/>
+            <span class="abel">编号：</span>
+            <input name="id" value="R02"/>
+            <br>
+            <span class="abel">线路名：</span>
+            <input name="name" value="L1-a1-a2"/>
+            <br>
+            <span class="abel">等级：</span>
+            <select name="grade">
+                <option value="普速" >普速</option>
+                <option value="高速" selected>高速</option>
+            </select>
+            <br>
+            <span class="abel">类型：</span>
+            <select name="level">
+                <option value="干线" selected>干线</option>
+                <option value="支线" >支线</option>
+                <option value="联络线" >联络线</option>
+            </select>
+            <br>
+            <span class="abel">轨距：</span>
+            <select name="gauge">
+                <option value="准轨" selected>准轨</option>
+                <option value="窄轨" >窄轨</option>
+            </select>
+            <br>
+            <span class="abel">长度：</span>
+            <input name="length" value="0.6km"/>
+            <br>
+            <span class="abel">路基：</span>
+            <select name="subgrade">
+                <option value="有砟" >有砟</option>
+                <option value="无砟" selected>无砟</option>
+            </select>
+            <br>
+            <span class="abel">架设：</span>
+            <select name="position">
+                <option value="地面" >地面</option>
+                <option value="地下" >地下</option>
+                <option value="高架/桥梁" selected>高架/桥梁</option>
+            </select>
+            <br>
+            <span class="abel">是否电气化：</span>
+            <input type="checkbox" checked name="electrification"/>
+            <br>
+            <span class="abel">备注：</span>
+            <br>
+            <textarea name="remark" style="width: 300px;height: 50px;">客专，与有轨电车共用</textarea>
+            <br>
+            <input type="submit" value="修改">
+        </form>
+        <button onclick="del('R02')">删除</button>
+        <br>
+        
+        R03-L3-a0-a1-普速-窄轨-干线-15km-无砟-地下-是-与地铁共用
+        <br>
+
+
+        <form method="get" action="/maintainance/line" id="ee_f" style="padding: 10px;border: 1px solid;">
+            <input name="method" value="edit" hidden/>
+            <span class="abel">编号：</span>
+            <input name="id" value="R03"/>
+            <br>
+            <span class="abel">线路名：</span>
+            <input name="name" value="L3-a0-a1"/>
+            <br>
+            <span class="abel">等级：</span>
+            <select name="grade">
+                <option value="普速" selected>普速</option>
+                <option value="高速" >高速</option>
+            </select>
+            <br>
+            <span class="abel">类型：</span>
+            <select name="level">
+                <option value="干线" selected>干线</option>
+                <option value="支线" >支线</option>
+                <option value="联络线" >联络线</option>
+            </select>
+            <br>
+            <span class="abel">轨距：</span>
+            <select name="gauge">
+                <option value="准轨" >准轨</option>
+                <option value="窄轨" selected>窄轨</option>
+            </select>
+            <br>
+            <span class="abel">长度：</span>
+            <input name="length" value="15km"/>
+            <br>
+            <span class="abel">路基：</span>
+            <select name="subgrade">
+                <option value="有砟" >有砟</option>
+                <option value="无砟" selected>无砟</option>
+            </select>
+            <br>
+            <span class="abel">架设：</span>
+            <select name="position">
+                <option value="地面" >地面</option>
+                <option value="地下" selected>地下</option>
+                <option value="高架/桥梁" >高架/桥梁</option>
+            </select>
+            <br>
+            <span class="abel">是否电气化：</span>
+            <input type="checkbox" checked name="electrification"/>
+            <br>
+            <span class="abel">备注：</span>
+            <br>
+            <textarea name="remark" style="width: 300px;height: 50px;">与地铁共用</textarea>
+            <br>
+            <input type="submit" value="修改">
+        </form>
+        <button onclick="del('R03')">删除</button>
+        <br>
+        
+        R04-L3-a0-a1-高速-准轨-干线-1km-无砟-地面-是-有货运动车混行
+        <br>
+
+
+        <form method="get" action="/maintainance/line" id="ee_f" style="padding: 10px;border: 1px solid;">
+            <input name="method" value="edit" hidden/>
+            <span class="abel">编号：</span>
+            <input name="id" value="R04"/>
+            <br>
+            <span class="abel">线路名：</span>
+            <input name="name" value="L3-a0-a1"/>
+            <br>
+            <span class="abel">等级：</span>
+            <select name="grade">
+                <option value="普速" >普速</option>
+                <option value="高速" selected>高速</option>
+            </select>
+            <br>
+            <span class="abel">类型：</span>
+            <select name="level">
+                <option value="干线" selected>干线</option>
+                <option value="支线" >支线</option>
+                <option value="联络线" >联络线</option>
+            </select>
+            <br>
+            <span class="abel">轨距：</span>
+            <select name="gauge">
+                <option value="准轨" selected>准轨</option>
+                <option value="窄轨" >窄轨</option>
+            </select>
+            <br>
+            <span class="abel">长度：</span>
+            <input name="length" value="1km"/>
+            <br>
+            <span class="abel">路基：</span>
+            <select name="subgrade">
+                <option value="有砟" >有砟</option>
+                <option value="无砟" selected>无砟</option>
+            </select>
+            <br>
+            <span class="abel">架设：</span>
+            <select name="position">
+                <option value="地面" selected>地面</option>
+                <option value="地下" >地下</option>
+                <option value="高架/桥梁" >高架/桥梁</option>
+            </select>
+            <br>
+            <span class="abel">是否电气化：</span>
+            <input type="checkbox" checked name="electrification"/>
+            <br>
+            <span class="abel">备注：</span>
+            <br>
+            <textarea name="remark" style="width: 300px;height: 50px;">有货运动车混行</textarea>
+            <br>
+            <input type="submit" value="修改">
+        </form>
+        <button onclick="del('R04')">删除</button>
+        <br>
+        
+    </div>
+</div>
+</body>
+<script>
+    function del(id) {
+        console.log(id);
+        if(confirm("此操作不可逆转，是否继续删除"+id+"？")){
+            window.location.href = "/maintainance/line?method=del&id="+id;
+        }
+    }
+</script>
+</html>
