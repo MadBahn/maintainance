@@ -25,7 +25,7 @@
     List<Mission> ml = mi.queryAll();
     List<Warn> wl = wi.queryAll();
 %>
-<div class="section-box">
+<div class="section-box" style="height: 890px;">
     <h1>主页</h1>
     <div class="mission">
         当前任务：

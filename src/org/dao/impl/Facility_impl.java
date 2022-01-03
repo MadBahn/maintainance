@@ -25,16 +25,40 @@ public class Facility_impl implements Facility_dao {
 
     @Override
     public void addFacility(Facility facility) {
-
+        String sql = "insert into equipment values " +
+                "(?,?,?,?,?)";
+        try {
+            qr.update(sql,facility.getEquipment_id(),facility.getEquipment_name(),
+                    facility.getEquipment_type(),facility.getEquipment_date(),
+                    facility.getEquipment_price());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void editFacility(Facility facility) {
-
+    public void editFacility(Facility facility,String id) {
+        String sql = "update equipment set " +
+                "equipment_id = ?,equipment_name = ?," +
+                "equipment_type = ?,equipment_date = ?," +
+                "equipment_price = ? " +
+                "where equipment_id = ?";
+        try {
+            qr.update(sql,facility.getEquipment_id(),facility.getEquipment_name(),
+                    facility.getEquipment_type(),facility.getEquipment_date(),
+                    facility.getEquipment_price(),id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void delFacility(String id) {
-
+        String sql = "delete from equipment where equipment_id = ?";
+        try {
+            qr.update(sql,id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

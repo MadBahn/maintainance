@@ -24,16 +24,39 @@ public class Warn_impl implements Warning_dao {
 
     @Override
     public void addWarn(Warn warn) {
-
+        String sql = "insert into warn values" +
+                "(?,?,?,?,?)";
+        try {
+            qr.update(sql,warn.getWarn_id(),warn.getWarn_grade(),
+                    warn.getWarn_content(),warn.getWarn_validtime(),
+                    warn.getWarn_date());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void editWarn(Warn warn) {
-
+    public void editWarn(Warn warn,String id) {
+        String sql = "update warn set " +
+                "warn_id = ?,warn_grade = ?,warn_content = ?," +
+                "warn_validtime = ?,warn_date = ? " +
+                "where warn_id = ?";
+        try {
+            qr.update(sql,warn.getWarn_id(),warn.getWarn_grade(),
+                    warn.getWarn_content(),warn.getWarn_validtime(),
+                    warn.getWarn_date(),id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void delWarn(String id) {
-
+        String sql = "delete from warn where warn_id = ?";
+        try {
+            qr.update(sql,id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

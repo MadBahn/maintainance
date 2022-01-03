@@ -1,28 +1,136 @@
 
-<!-- saved from url=(0046)http://localhost:8080/maintainance/warning.jsp -->
-<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<html>
+<head>
     <title>警告</title>
-    <link href="./警告_files/system.css" rel="stylesheet" type="text/css">
+    <link href="css/system.css" rel="stylesheet" type="text/css">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js" rel="external nofollow" >
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#e").click(function () {
+                $("#aw").slideToggle("fast")
+            })
+        })
+    </script>
 </head>
 <body>
 
 
+
 <header>
     <span>系统</span>
-    <a href="http://localhost:8080/maintainance/main.jsp">主页</a>
-    <a href="http://localhost:8080/maintainance/line.jsp">线路</a>
-    <a href="http://localhost:8080/maintainance/infrastructure.jsp">设施</a>
-    <a href="http://localhost:8080/maintainance/facility.jsp">设备</a>
-    <a href="http://localhost:8080/maintainance/mission.jsp">任务</a>
-    <a href="http://localhost:8080/maintainance/report.jsp">记录</a>
-    <a href="http://localhost:8080/maintainance/warning.jsp">警告</a>
+    <a href="main.jsp">主页</a>
+    <a href="line.jsp">线路</a>
+    <a href="infrastructure.jsp">设施</a>
+    <a href="facility.jsp">设备</a>
+    <a href="mission.jsp">任务</a>
+    <a href="report.jsp">记录</a>
+    <a href="warning.jsp">警告</a>
 </header>
 
-<div class="section-box">
+<div class="section-box" style="height: 890px;">
     <h1>警告</h1>
+    <button id="e">add</button>
+    <div class="add" id="aw" hidden>
+        <form action="/maintainance/warn" method="get">
+            <input name="method" value="add" hidden>
+            <span class="abel">编号：</span>
+            <input name="id"/>
+            <br>
+            <span class="abel">内容：</span>
+            <textarea name="content" style="width: 300px;height: 50px;"></textarea>
+            <br>
+            <span class="abel">等级：</span>
+            <select name="level">
+                <option value="普通">普通</option>
+                <option value="注意">注意</option>
+                <option value="严重">严重</option>
+                <option value="灾难">灾难</option>
+            </select>
+            <br>
+            <span class="abel">有效时间：</span>
+            <input name="validtime"/>
+            <br>
+            <span class="abel">日期：</span>
+            <input type="date" name="date"/>
+            <br>
+            <input type="submit" value="添加"/>
+        </form>
+    </div>
+    <div>
+        
+        W01-L1-a0-a1段发生卧轨自杀事件，可能影响列车正常运行-严重-3月-2021-12-30
+        <form action="/maintainance/warn" style="padding: 10px;border: 1px solid;" method="get">
+            <input name="_id" value="W01" hidden>
+            <input name="method" value="edit" hidden>
+            <span class="abel">编号：</span>
+            <input name="id" value="W01"/>
+            <br>
+            <span class="abel">内容：</span>
+            <textarea name="content" style="width: 300px;height: 50px;">L1-a0-a1段发生卧轨自杀事件，可能影响列车正常运行</textarea>
+            <br>
+            <span class="abel">等级：</span>
+            <select name="level">
+                <option value="普通" >普通</option>
+                <option value="注意" >注意</option>
+                <option value="严重" selected>严重</option>
+                <option value="灾难" >灾难</option>
+            </select>
+            <br>
+            <span class="abel">有效时间：</span>
+            <input name="validtime" value="3月"/>
+            <br>
+            <span class="abel">日期：</span>
+            <input type="date" name="date" value="2021-12-30"/>
+            <br>
+            <input type="submit" value="修改"/>
+        </form>
+        <button onclick="del('W01')">删除</button>
+        <br>
+        
+        W02-L1-a1-a2段桥面有裂痕，可能造成严重之生命及财产损失-普通-1年-2021-12-07
+        <form action="/maintainance/warn" style="padding: 10px;border: 1px solid;" method="get">
+            <input name="_id" value="W02" hidden>
+            <input name="method" value="edit" hidden>
+            <span class="abel">编号：</span>
+            <input name="id" value="W02"/>
+            <br>
+            <span class="abel">内容：</span>
+            <textarea name="content" style="width: 300px;height: 50px;">L1-a1-a2段桥面有裂痕，可能造成严重之生命及财产损失</textarea>
+            <br>
+            <span class="abel">等级：</span>
+            <select name="level">
+                <option value="普通" selected>普通</option>
+                <option value="注意" >注意</option>
+                <option value="严重" >严重</option>
+                <option value="灾难" >灾难</option>
+            </select>
+            <br>
+            <span class="abel">有效时间：</span>
+            <input name="validtime" value="1年"/>
+            <br>
+            <span class="abel">日期：</span>
+            <input type="date" name="date" value="2021-12-07"/>
+            <br>
+            <input type="submit" value="修改"/>
+        </form>
+        <button onclick="del('W02')">删除</button>
+        <br>
+        
+    </div>
 </div>
 
 
-
-
-</body></html>
+</body>
+<script>
+    function del(id) {
+        console.log(id);
+        if(confirm("此操作不可逆转，是否继续删除"+id+"？")){
+            window.location.href = "/maintainance/warn?method=del&id="+id;
+        }
+    }
+</script>
+</html>

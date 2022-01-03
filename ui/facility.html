@@ -1,9 +1,20 @@
 
 
+
+
 <html>
 <head>
     <title>设备</title>
     <link href="css/system.css" rel="stylesheet" type="text/css">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js" rel="external nofollow" >
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#b").click(function () {
+                $("#af").slideToggle("fast")
+            })
+        })
+    </script>
 </head>
 <body>
 
@@ -19,10 +30,131 @@
     <a href="warning.jsp">警告</a>
 </header>
 
+
 <div class="section-box">
     <h1>设备</h1>
+    <button id="b">add</button>
+    <div class="add" id="af" style="display: none">
+        <form action="/maintainance/facility" method="get">
+            <input name="method" value="add" hidden>
+            <span class="abel">编号：</span>
+            <input name="id"/>
+            <br>
+            <span class="abel">设备名：</span>
+            <input name="name"/>
+            <br>
+            <span class="abel">类型：</span>
+            <select name="type">
+                <option value="小型">小型</option>
+                <option value="大型">大型</option>
+            </select>
+            <br>
+            <span class="abel">日期：</span>
+            <input type="date" name="date"/>
+            <br>
+            <span class="abel">价格：</span>
+            <input name="price"/>
+            <br>
+            <input type="submit" value="添加">
+        </form>
+    </div>
+    <div>
+        
+        E01-多用途养护机车-大型-2021-12-02-40万
+        <br>
+        <form action="/maintainance/facility" method="get" style="padding: 10px;border: 1px solid;">
+            <input name="method" value="edit" hidden>
+            <input name="_id" value="E01" hidden>
+            <span class="abel">编号：</span>
+            <input name="id" value="E01"/>
+            <br>
+            <span class="abel">设备名：</span>
+            <input name="name" value="多用途养护机车"/>
+            <br>
+            <span class="abel">类型：</span>
+            <select name="type">
+                <option value="小型" >小型</option>
+                <option value="大型" selected>大型</option>
+            </select>
+            <br>
+            <span class="abel">日期：</span>
+            <input type="date" name="date" value="2021-12-02"/>
+            <br>
+            <span class="abel">价格：</span>
+            <input name="price" value="40万"/>
+            <br>
+            <input type="submit" value="修改">
+        </form>
+        <button onclick="del('E01')">删除</button>
+        <br>
+        
+        E02-铁路养护换枕机-大型-2021-11-02-28万
+        <br>
+        <form action="/maintainance/facility" method="get" style="padding: 10px;border: 1px solid;">
+            <input name="method" value="edit" hidden>
+            <input name="_id" value="E02" hidden>
+            <span class="abel">编号：</span>
+            <input name="id" value="E02"/>
+            <br>
+            <span class="abel">设备名：</span>
+            <input name="name" value="铁路养护换枕机"/>
+            <br>
+            <span class="abel">类型：</span>
+            <select name="type">
+                <option value="小型" >小型</option>
+                <option value="大型" selected>大型</option>
+            </select>
+            <br>
+            <span class="abel">日期：</span>
+            <input type="date" name="date" value="2021-11-02"/>
+            <br>
+            <span class="abel">价格：</span>
+            <input name="price" value="28万"/>
+            <br>
+            <input type="submit" value="修改">
+        </form>
+        <button onclick="del('E02')">删除</button>
+        <br>
+        
+        E03-电锤钻-小型-2021-08-03-735
+        <br>
+        <form action="/maintainance/facility" method="get" style="padding: 10px;border: 1px solid;">
+            <input name="method" value="edit" hidden>
+            <input name="_id" value="E03" hidden>
+            <span class="abel">编号：</span>
+            <input name="id" value="E03"/>
+            <br>
+            <span class="abel">设备名：</span>
+            <input name="name" value="电锤钻"/>
+            <br>
+            <span class="abel">类型：</span>
+            <select name="type">
+                <option value="小型" selected>小型</option>
+                <option value="大型" >大型</option>
+            </select>
+            <br>
+            <span class="abel">日期：</span>
+            <input type="date" name="date" value="2021-08-03"/>
+            <br>
+            <span class="abel">价格：</span>
+            <input name="price" value="735"/>
+            <br>
+            <input type="submit" value="修改">
+        </form>
+        <button onclick="del('E03')">删除</button>
+        <br>
+        
+    </div>
 </div>
 
 
 </body>
+<script>
+    function del(id) {
+        console.log(id);
+        if(confirm("此操作不可逆转，是否继续删除"+id+"？")){
+            window.location.href = "/maintainance/facility?method=del&_id="+id;
+        }
+    }
+</script>
 </html>
