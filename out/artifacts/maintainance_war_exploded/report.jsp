@@ -34,11 +34,16 @@
     <button id="c">add</button>
     <div class="add" id="ar" style="display: none">
         <form>
-            <input/>
+            <input name="id"/>
             <br>
-            <input/>
+            <input type="date" name="date"/>
             <br>
-            <input/>
+            <input name="content"/>
+            <br>
+            <select>
+
+            </select>
+            <input name="ref_id">
         </form>
     </div>
     <div>
