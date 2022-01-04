@@ -17,14 +17,24 @@
     Staff_impl si = new Staff_impl();
     List<Staff> sl = si.queryAll();
 %>
-<a href="add.jsp">添加</a><a href="console.jsp">控制台</a>
+<a href="add.jsp">添加</a>
+&nbsp;&nbsp;&nbsp;
+<a href="console.jsp">控制台</a>
 <ul>
     <%for(Staff i : sl){%>
     <li>
         <%=i.getStaff_id()%>-<%=i.getStaff_name()%>-<%=i.getStaff_account()%>-<%=i.getStaff_password()%>-<%=i.getStaff_position()%>-<%=i.getStaff_phone()%>-<%=i.getStaff_email()%>
+        <button onclick="del('<%=i.getStaff_id()%>')">删除</button>
         <br>
     </li>
     <%}%>
 </ul>
 </body>
+<script>
+    function del(id) {
+        if(confirm("此操作不可逆转，是否继续删除"+id+"？")){
+            window.location.href = "${pageContext.request.contextPath}/staff?method=del&_id="+id;
+        }
+    }
+</script>
 </html>

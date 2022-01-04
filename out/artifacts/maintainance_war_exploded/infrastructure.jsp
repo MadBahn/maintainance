@@ -60,7 +60,6 @@
     </div>
     <div>
         <%for (Infrastructure i : il){%>
-        <%=i.getFacility_id()%>-<%=i.getFacility_name()%>-<%=i.getFacility_type()%>-<%=i.getFacility_state()%>-<%=i.getFacility_remark()%>
         <br>
         <div style="padding: 10px;border: 1px solid;">
             <form action="${pageContext.request.contextPath}/infrastructure" method="get">

@@ -49,7 +49,6 @@
     </div>
     <div>
         <%for(Mission i : ml){%>
-        <%=i.getTask_id()%>-<%=i.getTask_content()%>-<%=i.getTask_date()%>
         <br>
         <div style="padding: 10px;border: 1px solid;">
             <form action="${pageContext.request.contextPath}/mission" method="get">

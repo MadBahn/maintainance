@@ -1,15 +1,31 @@
 
 
+
+
 <html>
 <head>
     <title>记录</title>
     <link href="css/system.css" rel="stylesheet" type="text/css">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js" rel="external nofollow" >
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#c").click(function () {
+                $("#ar").slideToggle("fast")
+            })
+        })
+    </script>
+
 </head>
 <body>
 
 
+
 <header>
-    <span>系统</span>
+    
+
+    <span>当前用户：<a href="account.jsp">查尔斯</a></span>
+    <span>————————————</span>
     <a href="main.jsp">主页</a>
     <a href="line.jsp">线路</a>
     <a href="infrastructure.jsp">设施</a>
@@ -21,8 +37,100 @@
 
 <div class="section-box">
     <h1>记录</h1>
+    <button id="c">add</button>
+    <div class="add" id="ar" style="display: none">
+        <form action="/maintainance/record" method="get">
+            <span class="abel">编号</span>
+            <input name="method" value="add" hidden>
+            <input name="id"/>
+            <br>
+            <span class="abel">日期</span>
+            <input type="date" name="date"/>
+            <br>
+            <span class="abel">内容</span>
+            <input name="content"/>
+            <br>
+            <span class="abel">对象编号</span>
+            <select name="target">
+                <option value="rail">线路</option>
+                <option value="facility">设备</option>
+                <option value="infrastructure">设施</option>
+            </select>
+            <input name="ref_id">
+            <br>
+            <input type="submit" value="添加">
+        </form>
+    </div>
+    <div>
+        
+        <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="/maintainance/record" method="get">
+                <span class="abel">编号</span>
+                <input name="method" value="edit" hidden>
+                <input name="_id" value="J01" hidden>
+                <input name="id" value="J01"/>
+                <br>
+                <span class="abel">日期</span>
+                <input type="date" name="date" value="2021-12-23"/>
+                <br>
+                <span class="abel">内容</span>
+                <input name="content" value="L1-a1-12路段养护"/>
+                <br>
+                <span class="abel">对象编号</span>
+                <input readonly value="R01">
+                <br>
+                <input type="submit" value="修改">
+            </form>
+            <button onclick="del('J01','/maintainance/record?method=del&_id=')">删除</button>
+        </div>
+        
+        <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="/maintainance/record" method="get">
+                <span class="abel">编号</span>
+                <input name="method" value="edit" hidden>
+                <input name="_id" value="J02" hidden>
+                <input name="id" value="J02"/>
+                <br>
+                <span class="abel">日期</span>
+                <input type="date" name="date" value="2021-12-19"/>
+                <br>
+                <span class="abel">内容</span>
+                <input name="content" value="压路机设备维护"/>
+                <br>
+                <span class="abel">对象编号</span>
+                <input readonly value="E01">
+                <br>
+                <input type="submit" value="修改">
+            </form>
+            <button onclick="del('J02','/maintainance/record?method=del&_id=')">删除</button>
+        </div>
+        
+        <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="/maintainance/record" method="get">
+                <span class="abel">编号</span>
+                <input name="method" value="edit" hidden>
+                <input name="_id" value="J03" hidden>
+                <input name="id" value="J03"/>
+                <br>
+                <span class="abel">日期</span>
+                <input type="date" name="date" value="2022-01-04"/>
+                <br>
+                <span class="abel">内容</span>
+                <input name="content" value="压路机设备检修"/>
+                <br>
+                <span class="abel">对象编号</span>
+                <input readonly value="E01">
+                <br>
+                <input type="submit" value="修改">
+            </form>
+            <button onclick="del('J03','/maintainance/record?method=del&_id=')">删除</button>
+        </div>
+        
+    </div>
 </div>
-
-
 </body>
+<script src="js/common/del.js"></script>
 </html>

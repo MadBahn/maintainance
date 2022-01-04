@@ -24,17 +24,37 @@ public class Record_impl implements Record_dao {
     }
 
     @Override
-    public void addRecord(Record record) {
-
+    public void addRecord(_Record record) {
+        String sql = "insert into record values " +
+                "(?,?,?,?,?,?)";
+        try {
+            qr.update(sql,record.getRecord_id(),record.getRecord_date(),
+                    record.getRecord_content(),record.getFacility_id(),
+                    record.getEquipment_id(),record.getRail_id());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void editRecord(Record record) {
-
+    public void editRecord(_Record record,String id) {
+        String sql = "update record set record_id = ?,record_date = ?," +
+                "record_content = ? where record_id = ?";
+        try {
+            qr.update(sql,record.getRecord_id(),record.getRecord_date(),
+                    record.getRecord_content(),id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void delRecord(String id) {
-
+        String sql = "delete from record where record_id = ?";
+        try {
+            qr.update(sql,id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

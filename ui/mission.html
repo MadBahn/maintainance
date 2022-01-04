@@ -1,15 +1,31 @@
 
 
+
+
 <html>
 <head>
     <title>任务</title>
     <link href="css/system.css" rel="stylesheet" type="text/css">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js" rel="external nofollow" >
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#d").click(function () {
+                $("#am").slideToggle("fast")
+            })
+        })
+    </script>
+
 </head>
 <body>
 
 
+
 <header>
-    <span>系统</span>
+    
+
+    <span>当前用户：<a href="account.jsp">查尔斯</a></span>
+    <span>————————————</span>
     <a href="main.jsp">主页</a>
     <a href="line.jsp">线路</a>
     <a href="infrastructure.jsp">设施</a>
@@ -21,8 +37,86 @@
 
 <div class="section-box">
     <h1>任务</h1>
+    <button id="d">add</button>
+    <div class="add" id="am" hidden>
+        <form action="/maintainance/mission" method="get">
+            <input name="method" value="add" hidden>
+            <span class="abel">编号</span>
+            <input name="id"/>
+            <br>
+            <span class="abel">内容</span>
+            <textarea name="content" style="width: 300px;height: 50px;resize: none;"></textarea>
+            <br>
+            <span class="abel">日期</span>
+            <input name="date" type="date"/>
+            <br>
+            <input type="submit" value="添加">
+        </form>
+    </div>
+    <div>
+        
+        <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="/maintainance/mission" method="get">
+                <input name="_id" value="T01" hidden>
+                <input name="method" value="edit" hidden>
+                <span class="abel">编号</span>
+                <input name="id" value="T01"/>
+                <br>
+                <span class="abel">内容</span>
+                <textarea name="content" style="width: 300px;height: 50px;resize: none;">在L1-a0-a1段巡检</textarea>
+                <br>
+                <span class="abel">日期</span>
+                <input name="date" type="date" value="2021-12-30"/>
+                <br>
+                <input type="submit" value="修改">
+            </form>
+            <button onclick="del('T01','/maintainance/mission?method=del&_id=')">删除</button>
+            <br>
+        </div>
+        
+        <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="/maintainance/mission" method="get">
+                <input name="_id" value="T02" hidden>
+                <input name="method" value="edit" hidden>
+                <span class="abel">编号</span>
+                <input name="id" value="T02"/>
+                <br>
+                <span class="abel">内容</span>
+                <textarea name="content" style="width: 300px;height: 50px;resize: none;">检查新陆站周边</textarea>
+                <br>
+                <span class="abel">日期</span>
+                <input name="date" type="date" value="2021-12-22"/>
+                <br>
+                <input type="submit" value="修改">
+            </form>
+            <button onclick="del('T02','/maintainance/mission?method=del&_id=')">删除</button>
+            <br>
+        </div>
+        
+        <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="/maintainance/mission" method="get">
+                <input name="_id" value="T03" hidden>
+                <input name="method" value="edit" hidden>
+                <span class="abel">编号</span>
+                <input name="id" value="T03"/>
+                <br>
+                <span class="abel">内容</span>
+                <textarea name="content" style="width: 300px;height: 50px;resize: none;">对L1-a0-a1段接触网维修</textarea>
+                <br>
+                <span class="abel">日期</span>
+                <input name="date" type="date" value="2021-12-15"/>
+                <br>
+                <input type="submit" value="修改">
+            </form>
+            <button onclick="del('T03','/maintainance/mission?method=del&_id=')">删除</button>
+            <br>
+        </div>
+        
+    </div>
 </div>
-
-
 </body>
+<script src="js/common/del.js"></script>
 </html>

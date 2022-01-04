@@ -87,7 +87,6 @@
     </div>
     <div class="display">
         <%for(Rail i : rl){%>
-        <%=i.getRail_id()%>-<%=i.getRail_name()%>-<%=i.getRail_grade()%>-<%=i.getRail_gauge()%>-<%=i.getRail_type()%>-<%=i.getRail_length()%>-<%=i.getRail_subgrade()%>-<%=i.getRail_position()%>-<%=i.getRail_electrification()%>-<%=i.getRail_remark()%>
         <br>
 <%--        <a href="#"><button>修改</button></a>--%>
 <%--        <button id="ee">修改</button>--%>

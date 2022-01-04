@@ -21,7 +21,10 @@
 
 
 <header>
-    <span>系统</span>
+    
+
+    <span>当前用户：<a href="account.jsp">查尔斯</a></span>
+    <span>————————————</span>
     <a href="main.jsp">主页</a>
     <a href="line.jsp">线路</a>
     <a href="infrastructure.jsp">设施</a>
@@ -41,7 +44,7 @@
             <input name="id"/>
             <br>
             <span class="abel">内容：</span>
-            <textarea name="content" style="width: 300px;height: 50px;"></textarea>
+            <textarea name="content" style="width: 300px;height: 50px;resize: none;"></textarea>
             <br>
             <span class="abel">等级：</span>
             <select name="level">
@@ -62,75 +65,71 @@
     </div>
     <div>
         
-        W01-L1-a0-a1段发生卧轨自杀事件，可能影响列车正常运行-严重-3月-2021-12-30
-        <form action="/maintainance/warn" style="padding: 10px;border: 1px solid;" method="get">
-            <input name="_id" value="W01" hidden>
-            <input name="method" value="edit" hidden>
-            <span class="abel">编号：</span>
-            <input name="id" value="W01"/>
-            <br>
-            <span class="abel">内容：</span>
-            <textarea name="content" style="width: 300px;height: 50px;">L1-a0-a1段发生卧轨自杀事件，可能影响列车正常运行</textarea>
-            <br>
-            <span class="abel">等级：</span>
-            <select name="level">
-                <option value="普通" >普通</option>
-                <option value="注意" >注意</option>
-                <option value="严重" selected>严重</option>
-                <option value="灾难" >灾难</option>
-            </select>
-            <br>
-            <span class="abel">有效时间：</span>
-            <input name="validtime" value="3月"/>
-            <br>
-            <span class="abel">日期：</span>
-            <input type="date" name="date" value="2021-12-30"/>
-            <br>
-            <input type="submit" value="修改"/>
-        </form>
-        <button onclick="del('W01')">删除</button>
         <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="/maintainance/warn" method="get">
+                <input name="_id" value="W01" hidden>
+                <input name="method" value="edit" hidden>
+                <span class="abel">编号：</span>
+                <input name="id" value="W01"/>
+                <br>
+                <span class="abel">内容：</span>
+                <textarea name="content" style="width: 300px;height: 50px;resize: none;">L1-a0-a1段发生卧轨自杀事件，可能影响列车正常运行</textarea>
+                <br>
+                <span class="abel">等级：</span>
+                <select name="level">
+                    <option value="普通" >普通</option>
+                    <option value="注意" selected>注意</option>
+                    <option value="严重" >严重</option>
+                    <option value="灾难" >灾难</option>
+                </select>
+                <br>
+                <span class="abel">有效时间：</span>
+                <input name="validtime" value="3月"/>
+                <br>
+                <span class="abel">日期：</span>
+                <input type="date" name="date" value="2021-12-30"/>
+                <br>
+                <input type="submit" value="修改"/>
+            </form>
+            <button onclick="del('W01','/maintainance/warn?method=del&_id=')">删除</button>
+            <br>
+        </div>
         
-        W02-L1-a1-a2段桥面有裂痕，可能造成严重之生命及财产损失-普通-1年-2021-12-07
-        <form action="/maintainance/warn" style="padding: 10px;border: 1px solid;" method="get">
-            <input name="_id" value="W02" hidden>
-            <input name="method" value="edit" hidden>
-            <span class="abel">编号：</span>
-            <input name="id" value="W02"/>
-            <br>
-            <span class="abel">内容：</span>
-            <textarea name="content" style="width: 300px;height: 50px;">L1-a1-a2段桥面有裂痕，可能造成严重之生命及财产损失</textarea>
-            <br>
-            <span class="abel">等级：</span>
-            <select name="level">
-                <option value="普通" selected>普通</option>
-                <option value="注意" >注意</option>
-                <option value="严重" >严重</option>
-                <option value="灾难" >灾难</option>
-            </select>
-            <br>
-            <span class="abel">有效时间：</span>
-            <input name="validtime" value="1年"/>
-            <br>
-            <span class="abel">日期：</span>
-            <input type="date" name="date" value="2021-12-07"/>
-            <br>
-            <input type="submit" value="修改"/>
-        </form>
-        <button onclick="del('W02')">删除</button>
         <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="/maintainance/warn" method="get">
+                <input name="_id" value="W02" hidden>
+                <input name="method" value="edit" hidden>
+                <span class="abel">编号：</span>
+                <input name="id" value="W02"/>
+                <br>
+                <span class="abel">内容：</span>
+                <textarea name="content" style="width: 300px;height: 50px;resize: none;">L1-a1-a2段桥面有裂痕，可能造成严重之生命及财产损失</textarea>
+                <br>
+                <span class="abel">等级：</span>
+                <select name="level">
+                    <option value="普通" >普通</option>
+                    <option value="注意" >注意</option>
+                    <option value="严重" >严重</option>
+                    <option value="灾难" selected>灾难</option>
+                </select>
+                <br>
+                <span class="abel">有效时间：</span>
+                <input name="validtime" value="1年"/>
+                <br>
+                <span class="abel">日期：</span>
+                <input type="date" name="date" value="2021-12-07"/>
+                <br>
+                <input type="submit" value="修改"/>
+            </form>
+            <button onclick="del('W02','/maintainance/warn?method=del&_id=')">删除</button>
+            <br>
+        </div>
         
     </div>
 </div>
 
-
 </body>
-<script>
-    function del(id) {
-        console.log(id);
-        if(confirm("此操作不可逆转，是否继续删除"+id+"？")){
-            window.location.href = "/maintainance/warn?method=del&id="+id;
-        }
-    }
-</script>
+<script src="js/common/del.js"></script>
 </html>

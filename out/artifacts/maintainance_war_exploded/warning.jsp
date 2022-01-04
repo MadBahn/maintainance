@@ -59,7 +59,6 @@
     </div>
     <div>
         <%for(Warn i : wl){%>
-        <%=i.getWarn_id()%>-<%=i.getWarn_content()%>-<%=i.getWarn_grade()%>-<%=i.getWarn_validtime()%>-<%=i.getWarn_date()%>
         <br>
         <div style="padding: 10px;border: 1px solid;">
             <form action="${pageContext.request.contextPath}/warn" method="get">

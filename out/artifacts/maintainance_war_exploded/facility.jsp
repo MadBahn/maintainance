@@ -57,7 +57,6 @@
     </div>
     <div>
         <%for(Facility i : fl){%>
-        <%=i.getEquipment_id()%>-<%=i.getEquipment_name()%>-<%=i.getEquipment_type()%>-<%=i.getEquipment_date()%>-<%=i.getEquipment_price()%>
         <br>
         <div style="padding: 10px;border: 1px solid;">
             <form action="${pageContext.request.contextPath}/facility" method="get">

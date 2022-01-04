@@ -11,6 +11,18 @@
     <title>后台</title>
 </head>
 <body>
-<a href="sys_index.jsp">进入</a>
+<form action="${pageContext.request.contextPath}/admin" method="post">
+    <span class="abel">用户</span>
+    <input name="a">
+    <br>
+    <span class="abel">密码</span>
+    <input name="pwd" type="password">
+    <br>
+    <p style="color: red;font-size: 12px;">
+        <%=request.getAttribute("error") == null?"":request.getAttribute("error")%>
+    </p>
+    <br>
+    <input type="submit" value="登录">
+</form>
 </body>
 </html>

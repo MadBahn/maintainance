@@ -1,0 +1,32 @@
+
+
+<html>
+<head>
+    <title>后台</title>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<body>
+<a href="sys_index.jsp"><button>返回</button></a>
+<br>
+<textarea name="result" id="result" readonly style="width: 850px;height: 500px;resize: none;"></textarea>
+<br>
+<input name="command" id="command" type="text" value="" style="width: 800px;">
+<button onclick="doCommand()">执行</button>
+</body>
+<script>
+    let result = document.getElementById("result")
+    let _command = document.getElementById("command")
+    // let _console = document.getElementById("_console")
+    // let _command = _console.command.value;
+
+    function doCommand(){
+        console.log(_command.value);
+        axios.get('/maintainance/console?command='+
+        _command.value).then(function (respnse) {
+            console.log(respnse.data)
+            result.value += respnse.data;
+            _command.value = "";
+        })
+    }
+</script>
+</html>

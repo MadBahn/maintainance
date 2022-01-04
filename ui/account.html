@@ -1,0 +1,95 @@
+
+
+<html>
+<head>
+    <title>账号管理</title>
+    <link href="css/system.css" rel="stylesheet" type="text/css">
+    <script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js" rel="external nofollow" >
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#a").click(function () {
+                $("#al").slideToggle("fast")
+            })
+        })
+        $(document).ready(function () {
+            $("#b").click(function () {
+                $("#af").slideToggle("fast")
+            })
+        })
+    </script>
+</head>
+<body>
+
+
+<header>
+    
+
+    <span>当前用户：<a href="account.jsp">查尔斯</a></span>
+    <span>————————————</span>
+    <a href="main.jsp">主页</a>
+    <a href="line.jsp">线路</a>
+    <a href="infrastructure.jsp">设施</a>
+    <a href="facility.jsp">设备</a>
+    <a href="mission.jsp">任务</a>
+    <a href="report.jsp">记录</a>
+    <a href="warning.jsp">警告</a>
+</header>
+
+
+<div class="section-box">
+    <h1>账号管理</h1>
+    <div style="padding: 20px;border: 1px solid;">
+        <span class="abel">真实姓名：</span>
+        查尔斯
+        <br>
+        <span class="abel">职位：</span>
+        巡检员
+        <br>
+        <span class="abel">电子邮件：</span>
+        123@qq.com
+        <br>
+        <span class="abel">电话号码：</span>
+        1008611
+        <br>
+    </div>
+    <button id="a">修改资料</button>
+    <div class="add" id="al" style="display: none">
+        <form method="post" action="/maintainance/mod">
+            <input name="id" value="001" hidden>
+            <input name="method" value="info" hidden>
+            <br>
+            <span class="abel">电话号码</span>
+            <input name="phone">
+            <br>
+            <span class="abel">电子邮件</span>
+            <input name="email">
+            <br>
+            <span class="abel">确认密码</span>
+            <input name="pwd">
+            <br>
+            <input type="submit" value="修改">
+        </form>
+    </div>
+    <button id="b">修改密码</button>
+    <div class="add" id="af" style="display: none">
+        <form method="post" action="/maintainance/mod">
+            <input name="id" value="001" hidden>
+            <input name="method" value="pwd" hidden>
+            <span class="abel">用户名</span>
+            <input name="account" value="123456">
+            <br>
+            <span class="abel">原密码</span>
+            <input name="pwd" type="password">
+            <br>
+            <span class="abel">新密码</span>
+            <input name="pwd_r" type="password">
+            <br>
+            <input type="submit" value="修改">
+        </form>
+    </div>
+    <a href="/maintainance/logout">退出</a>
+</div>
+
+</body>
+</html>
