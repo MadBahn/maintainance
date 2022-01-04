@@ -38,7 +38,7 @@
             <input name="id"/>
             <br>
             <span class="abel">内容：</span>
-            <textarea name="content" style="width: 300px;height: 50px;"></textarea>
+            <textarea name="content" style="width: 300px;height: 50px;resize: none;"></textarea>
             <br>
             <span class="abel">等级：</span>
             <select name="level">
@@ -60,44 +60,40 @@
     <div>
         <%for(Warn i : wl){%>
         <%=i.getWarn_id()%>-<%=i.getWarn_content()%>-<%=i.getWarn_grade()%>-<%=i.getWarn_validtime()%>-<%=i.getWarn_date()%>
-        <form action="${pageContext.request.contextPath}/warn" style="padding: 10px;border: 1px solid;" method="get">
-            <input name="_id" value="<%=i.getWarn_id()%>" hidden>
-            <input name="method" value="edit" hidden>
-            <span class="abel">编号：</span>
-            <input name="id" value="<%=i.getWarn_id()%>"/>
-            <br>
-            <span class="abel">内容：</span>
-            <textarea name="content" style="width: 300px;height: 50px;"><%=i.getWarn_content()%></textarea>
-            <br>
-            <span class="abel">等级：</span>
-            <select name="level">
-                <option value="普通" <%=i.getWarn_grade().equals("普通")?"selected":""%>>普通</option>
-                <option value="注意" <%=i.getWarn_grade().equals("注意")?"selected":""%>>注意</option>
-                <option value="严重" <%=i.getWarn_grade().equals("严重")?"selected":""%>>严重</option>
-                <option value="灾难" <%=i.getWarn_grade().equals("灾难")?"selected":""%>>灾难</option>
-            </select>
-            <br>
-            <span class="abel">有效时间：</span>
-            <input name="validtime" value="<%=i.getWarn_validtime()%>"/>
-            <br>
-            <span class="abel">日期：</span>
-            <input type="date" name="date" value="<%=i.getWarn_date()%>"/>
-            <br>
-            <input type="submit" value="修改"/>
-        </form>
-        <button onclick="del('<%=i.getWarn_id()%>')">删除</button>
         <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="${pageContext.request.contextPath}/warn" method="get">
+                <input name="_id" value="<%=i.getWarn_id()%>" hidden>
+                <input name="method" value="edit" hidden>
+                <span class="abel">编号：</span>
+                <input name="id" value="<%=i.getWarn_id()%>"/>
+                <br>
+                <span class="abel">内容：</span>
+                <textarea name="content" style="width: 300px;height: 50px;resize: none;"><%=i.getWarn_content()%></textarea>
+                <br>
+                <span class="abel">等级：</span>
+                <select name="level">
+                    <option value="普通" <%=i.getWarn_grade().equals("普通")?"selected":""%>>普通</option>
+                    <option value="注意" <%=i.getWarn_grade().equals("注意")?"selected":""%>>注意</option>
+                    <option value="严重" <%=i.getWarn_grade().equals("严重")?"selected":""%>>严重</option>
+                    <option value="灾难" <%=i.getWarn_grade().equals("灾难")?"selected":""%>>灾难</option>
+                </select>
+                <br>
+                <span class="abel">有效时间：</span>
+                <input name="validtime" value="<%=i.getWarn_validtime()%>"/>
+                <br>
+                <span class="abel">日期：</span>
+                <input type="date" name="date" value="<%=i.getWarn_date()%>"/>
+                <br>
+                <input type="submit" value="修改"/>
+            </form>
+            <button onclick="del('<%=i.getWarn_id()%>','${pageContext.request.contextPath}/warn?method=del&_id=')">删除</button>
+            <br>
+        </div>
         <%}%>
     </div>
 </div>
 
 </body>
-<script>
-    function del(id) {
-        console.log(id);
-        if(confirm("此操作不可逆转，是否继续删除"+id+"？")){
-            window.location.href = "${pageContext.request.contextPath}/warn?method=del&_id="+id;
-        }
-    }
-</script>
+<script src="js/common/del.js"></script>
 </html>

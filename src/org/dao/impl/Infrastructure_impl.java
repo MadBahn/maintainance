@@ -25,16 +25,38 @@ public class Infrastructure_impl implements Infrastructure_dao {
 
     @Override
     public void addInfrastructure(Infrastructure infrastructure) {
-
+        String sql = "insert into facility values " +
+                "(?,?,?,?,?)";
+        try {
+            qr.update(sql,infrastructure.getFacility_id(),infrastructure.getFacility_name(),
+                    infrastructure.getFacility_state(), infrastructure.getFacility_type(),
+                    infrastructure.getFacility_remark());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void editInfrastructure(Infrastructure infrastructure) {
-
+    public void editInfrastructure(Infrastructure infrastructure,String id) {
+        String sql = "update facility set facility_id = ?,facility_name = ?," +
+                "facility_state = ?,facility_type = ?,facility_remark = ? " +
+                "where facility_id = ?";
+        try {
+            qr.update(sql,infrastructure.getFacility_id(),infrastructure.getFacility_name(),
+                    infrastructure.getFacility_state(), infrastructure.getFacility_type(),
+                    infrastructure.getFacility_remark(),id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void delInfrastructure(String id) {
-
+        String sql = "delete from facility where facility_id = ?";
+        try {
+            qr.update(sql,id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

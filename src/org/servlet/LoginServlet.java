@@ -26,13 +26,12 @@ public class LoginServlet extends HttpServlet {
         Staff s = si.Login(account,pwd);
         System.out.println(s);
         if(s!=null){
+            request.getSession().setAttribute("user",s);
             response.sendRedirect("main.jsp");
         }else{
             request.setAttribute("error","用户名或密码错误");
             request.getRequestDispatcher("login.jsp").forward(request,response);
 //            response.sendRedirect("login.jsp");
         }
-
-
     }
 }

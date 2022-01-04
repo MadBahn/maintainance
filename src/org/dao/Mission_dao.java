@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface Mission_dao {
     List<Mission> queryAll();
-    void addStaff(Mission mission);
-    void editStaff(Mission mission);
-    void delStaff(Mission mission);
+    void addMission(Mission mission);
+    void editMission(Mission mission, String id);
+    void delMission(String id);
 }

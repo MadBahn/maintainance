@@ -32,26 +32,68 @@
     <h1>设施</h1>
     <button id="c">add</button>
     <div class="add" id="ai" hidden>
-        <form>
-            <input/>
+        <form action="${pageContext.request.contextPath}/infrastructure" method="get">
+            <input name="method" value="add" hidden>
+            <span class="abel">编号</span>
+            <input name="id"/>
             <br>
-            <input/>
+            <span class="abel">名称</span>
+            <input name="name"/>
             <br>
-            <input/>
+            <span class="abel">状态</span>
+            <select name="state">
+                <option value="使用中">使用中</option>
+                <option value="未使用">未使用</option>
+            </select>
+            <br>
+            <span class="abel">类型</span>
+            <select name="type">
+                <option value="大型">大型</option>
+                <option value="小型">小型</option>
+            </select>
+            <br>
+            <span class="abel">备注</span>
+            <textarea name="remark" style="width: 300px;height: 50px;resize: none;"></textarea>
+            <br>
+            <input type="submit" value="添加">
         </form>
     </div>
     <div>
         <%for (Infrastructure i : il){%>
         <%=i.getFacility_id()%>-<%=i.getFacility_name()%>-<%=i.getFacility_type()%>-<%=i.getFacility_state()%>-<%=i.getFacility_remark()%>
         <br>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="${pageContext.request.contextPath}/infrastructure" method="get">
+                <input name="_id" value="<%=i.getFacility_id()%>" hidden>
+                <input name="method" value="edit" hidden>
+                <span class="abel">编号</span>
+                <input name="id" value="<%=i.getFacility_id()%>"/>
+                <br>
+                <span class="abel">名称</span>
+                <input name="name" value="<%=i.getFacility_name()%>"/>
+                <br>
+                <span class="abel">状态</span>
+                <select name="state">
+                    <option value="使用中" <%=i.getFacility_state().equals("使用中")?"selected":""%>>使用中</option>
+                    <option value="未使用" <%=i.getFacility_state().equals("未使用")?"selected":""%>>未使用</option>
+                </select>
+                <br>
+                <span class="abel">类型</span>
+                <select name="type">
+                    <option value="大型" <%=i.getFacility_type().equals("大型")?"selected":""%>>大型</option>
+                    <option value="小型" <%=i.getFacility_type().equals("小型")?"selected":""%>>小型</option>
+                </select>
+                <br>
+                <span class="abel">备注</span>
+                <textarea name="remark" style="width: 300px;height: 50px;resize: none;"><%=i.getFacility_remark()%></textarea>
+                <br>
+                <input type="submit" value="修改">
+            </form>
+            <button onclick="del('<%=i.getFacility_id()%>','${pageContext.request.contextPath}/infrastructure?method=del&_id=')">删除</button>
+        </div>
         <%}%>
     </div>
 </div>
-<script>
-    function add(al){
-        let a = document.getElementById(al)
-        a.removeAttribute("hidden")
-    }
-</script>
+<script src="js/common/del.js"></script>
 </body>
 </html>

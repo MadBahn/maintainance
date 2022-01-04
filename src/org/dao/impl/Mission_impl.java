@@ -24,17 +24,38 @@ public class Mission_impl implements Mission_dao {
     }
 
     @Override
-    public void addStaff(Mission mission) {
+    public void addMission(Mission mission) {
+        String sql = "insert into task values " +
+                "(?,?,?)";
+        try {
+            qr.update(sql,mission.getTask_id(),
+                    mission.getTask_content(),mission.getTask_date());
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
     }
 
     @Override
-    public void editStaff(Mission mission) {
-
+    public void editMission(Mission mission, String id) {
+        String sql = "update task set " +
+                "task_id = ?,task_content = ?,task_date = ? " +
+                "where task_id = ?";
+        try {
+            qr.update(sql,mission.getTask_id(), mission.getTask_content(),
+                    mission.getTask_date(),id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
-    public void delStaff(Mission mission) {
-
+    public void delMission(String id) {
+        String sql = "delete from task where task_id = ?";
+        try {
+            qr.update(sql,id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 }

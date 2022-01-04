@@ -23,6 +23,5 @@
     <br>
     <input type="submit" value="登录">
 </form>
-<a href="main.jsp">登录</a>
 </body>
 </html>

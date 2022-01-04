@@ -17,7 +17,7 @@
     Staff_impl si = new Staff_impl();
     List<Staff> sl = si.queryAll();
 %>
-<a href="add.jsp">添加</a>
+<a href="add.jsp">添加</a><a href="console.jsp">控制台</a>
 <ul>
     <%for(Staff i : sl){%>
     <li>

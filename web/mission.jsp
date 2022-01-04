@@ -33,13 +33,13 @@
     <h1>任务</h1>
     <button id="d">add</button>
     <div class="add" id="am" hidden>
-        <form action="" method="get">
+        <form action="${pageContext.request.contextPath}/mission" method="get">
             <input name="method" value="add" hidden>
             <span class="abel">编号</span>
             <input name="id"/>
             <br>
             <span class="abel">内容</span>
-            <textarea name="content"></textarea>
+            <textarea name="content" style="width: 300px;height: 50px;resize: none;"></textarea>
             <br>
             <span class="abel">日期</span>
             <input name="date" type="date"/>
@@ -51,30 +51,27 @@
         <%for(Mission i : ml){%>
         <%=i.getTask_id()%>-<%=i.getTask_content()%>-<%=i.getTask_date()%>
         <br>
-        <form action="" method="get">
-            <input name="_id" value="<%=i.getTask_id()%>" hidden>
-            <input name="method" value="edit" hidden>
-            <span class="abel">编号</span>
-            <input name="id" value="<%=i.getTask_id()%>"/>
+        <div style="padding: 10px;border: 1px solid;">
+            <form action="${pageContext.request.contextPath}/mission" method="get">
+                <input name="_id" value="<%=i.getTask_id()%>" hidden>
+                <input name="method" value="edit" hidden>
+                <span class="abel">编号</span>
+                <input name="id" value="<%=i.getTask_id()%>"/>
+                <br>
+                <span class="abel">内容</span>
+                <textarea name="content" style="width: 300px;height: 50px;resize: none;"><%=i.getTask_content()%></textarea>
+                <br>
+                <span class="abel">日期</span>
+                <input name="date" type="date" value="<%=i.getTask_date()%>"/>
+                <br>
+                <input type="submit" value="修改">
+            </form>
+            <button onclick="del('<%=i.getTask_id()%>','${pageContext.request.contextPath}/mission?method=del&_id=')">删除</button>
             <br>
-            <span class="abel">内容</span>
-            <textarea name="content"><%=i.getTask_content()%></textarea>
-            <br>
-            <span class="abel">日期</span>
-            <input name="date" type="date" value="<%=i.getTask_date()%>"/>
-            <br>
-            <input type="submit" value="添加">
-        </form>
-        <button>删除</button>
-        <br>
+        </div>
         <%}%>
     </div>
 </div>
 </body>
-<script>
-    function add(al){
-        let a = document.getElementById(al)
-        a.removeAttribute("hidden")
-    }
-</script>
+<script src="js/common/del.js"></script>
 </html>
