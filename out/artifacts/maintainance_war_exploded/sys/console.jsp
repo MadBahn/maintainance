@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>后台</title>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="../js/common/axios.min.js"></script>
 </head>
 <body>
 <a href="sys_index.jsp"><button>返回</button></a>

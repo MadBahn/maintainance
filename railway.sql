@@ -11,11 +11,25 @@
  Target Server Version : 80026
  File Encoding         : 65001
 
- Date: 03/01/2022 16:21:10
+ Date: 04/01/2022 20:20:24
 */
 
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for admin
+-- ----------------------------
+DROP TABLE IF EXISTS `admin`;
+CREATE TABLE `admin`  (
+  `admin` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL
+) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of admin
+-- ----------------------------
+INSERT INTO `admin` VALUES ('admin', '123456');
 
 -- ----------------------------
 -- Table structure for equipment
@@ -35,7 +49,6 @@ CREATE TABLE `equipment`  (
 -- ----------------------------
 INSERT INTO `equipment` VALUES ('E01', '多用途养护机车', '大型', '2021-12-02', '40万');
 INSERT INTO `equipment` VALUES ('E02', '铁路养护换枕机', '大型', '2021-11-02', '28万');
-INSERT INTO `equipment` VALUES ('E03', '电锤钻', '小型', '2021-08-03', '735');
 
 -- ----------------------------
 -- Table structure for facility
@@ -53,10 +66,10 @@ CREATE TABLE `facility`  (
 -- ----------------------------
 -- Records of facility
 -- ----------------------------
-INSERT INTO `facility` VALUES ('G01', '新陆站', '禁用', '大型', '地上干线站');
-INSERT INTO `facility` VALUES ('G02', 'L1-a0-a1 信号机', '禁用', '小型', '老式信号机');
-INSERT INTO `facility` VALUES ('G03', 'L1-a0-a1 机车所', '使用', '大型', '仅存放动车');
-INSERT INTO `facility` VALUES ('G04', '东方站', '使用', '大型', '地下通勤站');
+INSERT INTO `facility` VALUES ('G01', '新陆站', '未使用', '大型', '地上干线站');
+INSERT INTO `facility` VALUES ('G02', 'L1-a0-a1 信号机', '未使用', '小型', '老式信号机');
+INSERT INTO `facility` VALUES ('G03', 'L1-a0-a1 机车所', '未使用', '大型', '仅存放动车');
+INSERT INTO `facility` VALUES ('G04', '东方站', '使用中', '大型', '地面通勤站');
 
 -- ----------------------------
 -- Table structure for rail
@@ -81,7 +94,7 @@ CREATE TABLE `rail`  (
 -- ----------------------------
 INSERT INTO `rail` VALUES ('R01', 'L1-a0-a1', '普速', '准轨', '干线', '12km', '有砟', '地面', '是', '客专，有高速动车混行');
 INSERT INTO `rail` VALUES ('R02', 'L1-a1-a2', '高速', '准轨', '干线', '0.6km', '无砟', '高架/桥梁', '是', '客专，与有轨电车共用');
-INSERT INTO `rail` VALUES ('R03', 'L3-a0-a1', '普速', '窄轨', '干线', '15km', '无砟', '地下', '是', '与地铁共用');
+INSERT INTO `rail` VALUES ('R03', 'L3-a0-a1', '普速', '窄轨', '干线', '1km', '无砟', '地下', '是', '与地铁共用');
 
 -- ----------------------------
 -- Table structure for record
@@ -100,8 +113,9 @@ CREATE TABLE `record`  (
 -- ----------------------------
 -- Records of record
 -- ----------------------------
-INSERT INTO `record` VALUES ('J01', '2021-12-23', 'L1-a1-12路段养护', '无', '无', 'R01');
-INSERT INTO `record` VALUES ('J02', '2021-12-19', '压路机设备安全检测', '无', 'E01', '无');
+INSERT INTO `record` VALUES ('J01', '2021-12-23', 'L1-a1-12路段养护', '', '', 'R01');
+INSERT INTO `record` VALUES ('J02', '2021-12-19', '压路机设备维护', NULL, 'E01', NULL);
+INSERT INTO `record` VALUES ('J03', '2022-01-04', '压路机设备检修', '', 'E01', '');
 
 -- ----------------------------
 -- Table structure for staff
@@ -124,7 +138,6 @@ CREATE TABLE `staff`  (
 INSERT INTO `staff` VALUES ('001', '查尔斯', '123456', '123456', '巡检员', '1008611', '123@qq.com');
 INSERT INTO `staff` VALUES ('002', '弗拉基米尔', '654321', '654321', '维修员', '1001011', '321@qq.com');
 INSERT INTO `staff` VALUES ('003', '王舍', '111111', '111111', '巡检员', '1001086', '111@qq.com');
-INSERT INTO `staff` VALUES ('004', '李亮', '123123', '123123', '巡检员', '12312312', '333@qq.com');
 
 -- ----------------------------
 -- Table structure for task
@@ -160,7 +173,7 @@ CREATE TABLE `warn`  (
 -- ----------------------------
 -- Records of warn
 -- ----------------------------
-INSERT INTO `warn` VALUES ('W01', '严重', 'L1-a0-a1段发生卧轨自杀事件，可能影响列车正常运行', '3月', 0x323032312D31322D3330);
-INSERT INTO `warn` VALUES ('W02', '普通', 'L1-a1-a2段桥面有裂痕，可能造成严重之生命及财产损失', '1年', 0x323032312D31322D3037);
+INSERT INTO `warn` VALUES ('W01', '注意', 'L1-a0-a1段发生卧轨自杀事件，可能影响列车正常运行', '3月', 0x323032312D31322D3330);
+INSERT INTO `warn` VALUES ('W02', '灾难', 'L1-a1-a2段桥面有裂痕，可能造成严重之生命及财产损失', '1年', 0x323032312D31322D3037);
 
 SET FOREIGN_KEY_CHECKS = 1;
